@@ -2,10 +2,10 @@
 	create table t_empl
 	(
 		emp_id int identity(1001,2) ,
-		emp_code varchar(max),
-		emp_f_name varchar(max) Not null,
-		emp_m_name varchar(max),
-		emp_l_name varchar(max) not null,
+		emp_code varchar(40),
+		emp_f_name varchar(40) Not null,
+		emp_m_name varchar(40),
+		emp_l_name varchar(40) not null,
 		emp_dob date not null,
 		emp_doj date not null,
 		constraint pk primary key(emp_id),
@@ -36,7 +36,7 @@
 	create table t_activity
 	(
 		activity_id int not null,
-		activity_description varchar(max),
+		activity_description varchar(40),
 		constraint p_k primary key(activity_id)
 	)
 	 
