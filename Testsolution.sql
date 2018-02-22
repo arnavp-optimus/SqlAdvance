@@ -1,5 +1,3 @@
----------1-----------
-
 ---------1.CREATING TABLE Train_Details-----------
 
 CREATE TABLE Train_Details
@@ -179,6 +177,8 @@ SELECT ROUTING.train_name,ROUTING.station_name,Distance.distance from ROUTING
 left join Distance on ROUTING.train_name=Distance.train_name
 
 ===================================================================================================
+
+
  -------------THIS IS THE FINAL TABLE---------------
 
 CREATE TABLE Avg_Speed
@@ -233,7 +233,7 @@ ORDER BY Train_Name DESC;
 
 Select Train_Name,avg_speed from Avg_Speed where avg_speed=(SELECT MAX(avg_speed) as max1 from Avg_Speed)
 
---(C) Name of the train which has the max Average speed. 
+--(C)Name those trains which stop at least at three stations. 
 
 select train_name from Journey_details left join Train_Details on Train_Details.Train_id=Journey_details.Train_Id 
 group by(train_name) having count(Station_Id)>2  ;
@@ -246,24 +246,7 @@ where station_id  IN (102, 104) group by train_name);
 
 -------------Question3--------------------
 
-
-SELECT DISTINCT J.Train_Id , T.Train_Name  
- FROM Journey_Details J INNER JOIN Train_Details T
-ON J.Train_Id = T.Train_Id
-
-
-SELECT DISTINCT J.Station_Id , J.Train_Id ,S.Station_Name AS Boarding
-FROM JOURNEY_DETAILS J INNER JOIN STATION_DETAILS S
-ON J.Station_Id = S.Station_Id
- WHERE J.Schedule_Arrival IS NULL
-
- 
-SELECT DISTINCT J.Station_Id , J.Train_Id ,S.Station_Name AS Destination
-FROM Journey_Details J INNER JOIN Station_Details S
-ON J.Station_Id = S.Station_Id
- WHERE J.Departure IS NULL
-
- CREATE Table temp
+CREATE Table temp
  (
  Train_Id int,
  Train_Name varchar(60)
@@ -400,7 +383,3 @@ Project on Engineer.Eng_proj_id = Project.Project_id ;
 ---------2(B)number of hours spent as Each project in their respective department. --------------------------------------------------------------
 
 SELECT Project.Project_name,Project.Num_of_hours,Project.Project_Dept from Project ;
-
-
-
-
